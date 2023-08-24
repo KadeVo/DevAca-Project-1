@@ -2,21 +2,13 @@ import { useState, useEffect } from 'react'
 
 import { getWelcome, getCat } from '../apiClient.ts'
 
-import { Cat } from '../../models/welcome.ts'
+import { Cat, CatDetails } from '../../models/welcome.ts'
 
 function App() {
   const [welcomeStatement, setWelcomeStatement] = useState('')
-  const [cat, setCat] = useState([] as Cat[])
+  const [cat, setCat] = useState(null as Cat | null)
 
   useEffect(() => {
-    getWelcome()
-      .then((res) => {
-        setWelcomeStatement(res.statement)
-      })
-      .catch((err) => {
-        console.error(err.message)
-      })
-
     try {
       // eslint-disable-next-line no-inner-declarations
       async function fetchCats() {
@@ -33,13 +25,18 @@ function App() {
   return (
     <>
       <h1>{welcomeStatement}</h1>
-      {cat.map((x) => {
+      {/* {cat.map((x) => {
         return (
           <>
             <img key={x.id} src={x.url} alt="Cat being funny" />
           </>
         )
-      })}
+      })} */}
+      {cat !== null && (
+        <div>
+          <img key={cat.id} src={cat.url} alt="Cat being funny" />
+        </div>
+      )}
     </>
   )
 }

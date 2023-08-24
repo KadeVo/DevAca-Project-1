@@ -10,6 +10,8 @@ export function getWelcome(): Promise<Welcome> {
 // ***   ***   ***
 
 export async function getCat() {
-  const db = await request.get('https://api.thecatapi.com/v1/images/search')
+  const cat = await request.get('https://api.thecatapi.com/v1/images/search')
+  const catId = cat.body[0].id
+  const db = await request.get(`https://api.thecatapi.com/v1/images/${catId}`)
   return db.body
 }
