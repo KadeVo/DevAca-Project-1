@@ -1,10 +1,11 @@
 import { GetRandomCat } from './GetRandomCat.tsx'
-import { Header } from './Header.tsx'
+import React from 'react';
+import Header from './Header.tsx'
 
 function App() {
   return (
     <>
-      <div>
+      <div className="app">
         <Header />
       </div>
       <GetRandomCat />
