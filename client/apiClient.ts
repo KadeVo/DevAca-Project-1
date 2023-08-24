@@ -7,6 +7,11 @@ export async function getCat() {
   return cat.body
 }
 
+export async function getCatList() {
+  const cat = await request.get(`${serverURL}?limit=10`)
+  return cat.body
+}
+
 export async function likeCatPic(objToPost: object) {
   const urlForPost = '/api/v1/cats/votes'
   const response = await request.post(urlForPost).send(objToPost)
