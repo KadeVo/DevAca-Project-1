@@ -1,12 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>React FTW!</title>
-  </head>
-  <body>
-    <div id="app"></div>
 
-    <script src="./client/index.tsx" type="module"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <title>React FTW!</title>
+  <link rel="stylesheet" href="public/style.css">
+</head>
+
+<body>
+  <div class="app">
+
+    <div class="container">
+      <div class="logoContainer">
+        <img src="images/dc65035f868ac2a6882509e856ebc36d.png" class="logo">
+        <h1>OnlyCats</h1>
+        <a href="displayCat.html">Display Cat</a>
+      </div>
+      <div id="buttonContainer">
+        <button type="button" class="onlyButton">
+          <span class="randomFont">Random</span>
+          <span class="buttonFont">Button</span>
+        </button>
+
+        <button type="button" class="onlyButton buttonFont">Browse OnlyCats</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2023 OnlyCats. All rights reserved.</p>
+  </footer>
+  <script src="./client/index.tsx" type="module"></script>
+</body>
+
 </html>
