@@ -1,18 +1,21 @@
 import express from 'express'
-import { Welcome } from '../../models/welcome.ts'
+import request from 'superagent'
+import 'dotenv/config'
 
 const router = express.Router()
 
 // GET /api/v1/welcome/
-router.get('/', (req, res) => {
-  try {
-    res.json({ statement: 'Welcome to external APIs!' } as Welcome)
-  } catch (err) {
-    if (err instanceof Error) {
-      res.status(500).send((err as Error).message)
-    } else {
-      res.status(500).send('Something went wrong')
-    }
+router.post('/votes', async (req, res) => {
+  const objToPost = req.body
+  console.log(process.env.x_api_key)
+  if (process.env.x_api_key) {
+    const response = await request
+      .post('https://api.thecatapi.com/v1/votes')
+      .send(objToPost)
+      .set('x-api-key', process.env.x_api_key)
+    res.json(response.body)
+  } else {
+    res.sendStatus(500)
   }
 })
 

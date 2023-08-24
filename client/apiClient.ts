@@ -1,17 +1,22 @@
 import request from 'superagent'
-import { Welcome } from '../models/welcome.ts'
 
-const serverURL = '/api/v1'
-
-// *** EXAMPLE ***
-export function getWelcome(): Promise<Welcome> {
-  return request.get(`${serverURL}/welcome`).then((response) => response.body)
-}
-// ***   ***   ***
+const serverURL = 'https://api.thecatapi.com/v1/images/search'
 
 export async function getCat() {
-  const cat = await request.get('https://api.thecatapi.com/v1/images/search')
-  const catId = cat.body[0].id
-  const db = await request.get(`https://api.thecatapi.com/v1/images/${catId}`)
-  return db.body
+  const cat = await request.get(serverURL)
+  return cat.body
+}
+
+export async function likeCatPic(objToPost: object) {
+  const urlForPost = '/api/v1/cats/votes'
+  const response = await request.post(urlForPost).send(objToPost)
+  console.log(response)
+  return response.body
+}
+
+export async function dislikeCatPic(objToPost: object) {
+  const urlForPost = '/api/v1/cats/votes'
+  const response = await request.post(urlForPost).send(objToPost)
+  console.log(response.body)
+  return response.body
 }
