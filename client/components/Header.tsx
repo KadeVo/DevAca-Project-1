@@ -43,13 +43,13 @@ function Header() {
           >
             Random Cat
           </button>
-
         </Link>
-        <button type="button" className="onlyButton browseButton">
-          Browse Felines
-        </button>
+        <Link to="cats/browser">
+          <button type="button" className="onlyButton browseButton">
+            Browse Felines
+          </button>
+        </Link>
         <h5> - </h5>
-
       </div>
     </>
   )
