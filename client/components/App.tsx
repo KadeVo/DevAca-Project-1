@@ -4,11 +4,12 @@ import { Header } from './Header.tsx'
 function App() {
   return (
     <>
-      <header>
+      <div className="app">
         <Header />
-      </header>
+   
       <div>
         <Outlet />
+      </div>
       </div>
     </>
   )
