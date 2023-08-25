@@ -25,3 +25,9 @@ export async function dislikeCatPic(objToPost: object) {
   console.log(response.body)
   return response.body
 }
+
+export async function getCatBreeds() {
+  const urlToGet = 'https://api.thecatapi.com/v1/breeds'
+  const response = await request.get(urlToGet)
+  return response.body
+}
