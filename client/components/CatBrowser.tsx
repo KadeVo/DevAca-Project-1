@@ -7,22 +7,29 @@ interface breed {
   name: string
 }
 
+interface breed1 {
+  id: number
+  breedName: string
+}
+
 export default function CatBrowser() {
   const [listCats, setListCats] = useState([] as Cat[] | null)
-  const [catBreeds, setCatBreeds] = useState([] as Cat[] | null)
+  const [catBreeds, setCatBreeds] = useState([] as breed1[] | null)
 
   async function fetchCatBreeds() {
     const allCatBreeds = await getCatBreeds()
-    console.log(allCatBreeds)
-    // if (allCatBreeds.length > 0) {
     const refinedBreeds = allCatBreeds.map((breed: breed) => ({
       id: breed.id,
       breedName: breed.name,
     }))
-    console.log(refinedBreeds)
-    // }
-    setCatBreeds(allCatBreeds)
+    setCatBreeds(refinedBreeds)
   }
+
+  const listOfOptions = catBreeds?.map((breed) => (
+    <option value={breed.id} key={breed.id}>
+      {breed.breedName}
+    </option>
+  ))
 
   useEffect(() => {
     try {
@@ -41,6 +48,9 @@ export default function CatBrowser() {
 
   return (
     <>
+      <form>
+        <select>{listOfOptions}</select>
+      </form>
       {listCats?.map((x) => {
         return (
           <>
