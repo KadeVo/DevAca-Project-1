@@ -48,19 +48,23 @@ export default function CatBrowser() {
 
   return (
     <>
+      <h5> - </h5>
       <form>
         <select>{listOfOptions}</select>
       </form>
+      <div>
+        <h5> - </h5>
+      </div>
       {listCats?.map((x) => {
         return (
-          <>
+          <div className="catpix">
             <img
               key={x.id}
               src={x.url}
               style={{ width: '500px', height: '500px' }}
               alt="Cat being funny"
             />
-          </>
+          </div>
         )
       })}
     </>

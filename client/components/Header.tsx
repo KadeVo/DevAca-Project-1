@@ -1,4 +1,4 @@
-import { useEffect, useState, } from 'react'
+import { useEffect, useState } from 'react'
 import { getCat, likeCatPic } from '../apiClient.ts' // Remove ".ts" extensions
 import { Cat } from '../../models/models.ts' // Remove ".ts" extensions
 import { Link } from 'react-router-dom'
@@ -28,21 +28,26 @@ function Header() {
       <div className="header">
         <div className="logoContainer">
           <img src="/images/OnlyCatsFinal.png" alt="Logo" className="logo" />
-          <h1>OnlyCats</h1>
         </div>
-
       </div>
       <div className="navContainer">
         {/* <a href="index.html" className="onlyButton">
           Back to Home
         </a> */}
-        <Link to="/cats/random"> <button type="button" className="onlyButton randomButton" onClick={fetchCats}>
-          Random Cat
-        </button>
+        <Link to="/cats/random">
+          {' '}
+          <button
+            type="button"
+            className="onlyButton randomButton"
+            onClick={fetchCats}
+          >
+            Random Cat
+          </button>
         </Link>
         <button type="button" className="onlyButton browseButton">
-          Browse OnlyCats
+          Browse Felines
         </button>
+        <h5> - </h5>
       </div>
     </>
   )
