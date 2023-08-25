@@ -15,6 +15,7 @@ interface breed1 {
 export default function CatBrowser() {
   const [listCats, setListCats] = useState([] as Cat[] | null)
   const [catBreeds, setCatBreeds] = useState([] as breed1[] | null)
+  const [singleBreed, setSingleBreed] = useState(null)
 
   async function fetchCatBreeds() {
     const allCatBreeds = await getCatBreeds()
@@ -46,10 +47,18 @@ export default function CatBrowser() {
     }
   }, [])
 
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    console.log(e.target)
+    setSingleBreed(e.target.value)
+  }
+
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
+        {/* <input type="select" /> */}
         <select>{listOfOptions}</select>
+        <button type="submit">Choose</button>
       </form>
       {listCats?.map((x) => {
         return (
