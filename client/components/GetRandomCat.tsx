@@ -1,18 +1,22 @@
 import { useEffect, useState } from 'react'
 import { getCat, likeCatPic } from '../apiClient.ts'
 import { Cat } from '../../models/models.ts'
+import { Link } from 'react-router-dom'
+
+
 
 export function GetRandomCat() {
   const [cat, setCat] = useState([] as Cat[] | null)
+  async function fetchCats() {
+    const newCat = await getCat()
+    console.log(newCat)
+    setCat(newCat)
+  }
 
   useEffect(() => {
     try {
       // eslint-disable-next-line no-inner-declarations
-      async function fetchCats() {
-        const newCat = await getCat()
-        console.log(newCat)
-        setCat(newCat)
-      }
+
       fetchCats()
     } catch (error) {
       console.error(error)
@@ -61,12 +65,18 @@ export function GetRandomCat() {
               style={{ width: '500px', height: '500px' }}
               alt="Cat being funny"
             />
-            <button onClick={handleLikeClick} value={x.id}>
-              Like
-            </button>
-            <button onClick={handleDislikeClick} value={x.id}>
-              Dislike
-            </button>
+            <div className="buttonContainer" >
+              <Link to="/"> <button type="button" className="onlyButton randomButton" onClick={fetchCats}>
+                Back to home
+              </button>
+              </Link>
+              <button className="likeButton" onClick={handleLikeClick} value={x.id}>
+                Like
+              </button>
+              <button className="dislikeButton" onClick={handleDislikeClick} value={x.id}>
+                Dislike
+              </button>
+            </div>
           </>
         )
       })}
