@@ -28,7 +28,6 @@ function Header() {
       <div className="header">
         <div className="logoContainer">
           <img src="/images/OnlyCatsFinal.png" alt="Logo" className="logo" />
-          <h1>OnlyCats</h1>
         </div>
       </div>
       <div className="navContainer">
@@ -44,12 +43,13 @@ function Header() {
           >
             Random Cat
           </button>
+
         </Link>
-        <Link to="cats/browser">
-          <button type="button" className="onlyButton browseButton">
-            Browse OnlyCats
-          </button>
-        </Link>
+        <button type="button" className="onlyButton browseButton">
+          Browse Felines
+        </button>
+        <h5> - </h5>
+
       </div>
     </>
   )
