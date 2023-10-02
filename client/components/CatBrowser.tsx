@@ -80,3 +80,5 @@ export default function CatBrowser() {
     </div>
   )
 }
+
+// Add tests?
